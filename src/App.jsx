@@ -1,35 +1,34 @@
 import React from 'react'
-import Cards from './components/Cards';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Base from './components/Base';
+import Inicio from './components/Inicio';
 
 function App() {
   return (
-    <div className="container">
-       <h1>Propiedades de los componentes</h1>
-       <hr/>
-     <div className="row">
-          <div className="col">
-              <Cards
-                  imagen="http://lorempixel.com/150/150/"
-                  titulo="Título card 1"
-                  texto="Texto de la card 1"
-              />
-          </div>
-          <div className="col">
-              <Cards
-                  imagen="http://lorempixel.com/150/150/"
-                  titulo="Título card 2"
-                  texto="Texto de la card 2"
-              />
-          </div>
-          <div className="col">
-              <Cards
-                  imagen="http://lorempixel.com/150/150/"
-                  titulo="Título card 3"
-                  texto="Texto de la card 3"
-              />
-          </div>
-      </div>
-    </div>
+    <Router>
+      <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/inicio">Inicio</Link>
+          </li>
+          
+        </ul>
+      <Switch>
+        <Route path="/inicio/:nombre">
+            <Inicio/>
+        </Route>
+        <Route path="/">
+            <Base/>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
