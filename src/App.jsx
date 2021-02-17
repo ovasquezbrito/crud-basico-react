@@ -6,26 +6,32 @@ import {
   Link
 } from "react-router-dom";
 import Base from './components/Base';
-import Inicio from './components/Inicio';
+import Usuario from './components/Usuario';
+import Usuarios from './components/Usuarios';
 
 function App() {
   return (
     <Router>
       <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Inicio</Link>
           </li>
           <li>
-            <Link to="/inicio">Inicio</Link>
+            <Link to="/users">Usuarios</Link>
           </li>
+          
           
         </ul>
       <Switch>
-        <Route path="/inicio/:nombre">
-            <Inicio/>
-        </Route>
-        <Route path="/">
+        <Route exact path="/">
             <Base/>
+        </Route>
+        
+        <Route path="/users/:id">
+            <Usuario/>
+        </Route>
+        <Route path="/users">
+            <Usuarios/>
         </Route>
       </Switch>
     </Router>
